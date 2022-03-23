@@ -43,10 +43,11 @@ module.exports.updateExistingJoke = (req, res) => {
         });
 }
 module.exports.deleteOneJoke = (req, res) => {
-    Joke.deleteOne(req.params.id)
-        .then(res =>
-            res.json({deleted: res}))
+    Joke.deleteOne({ _id: req.params._id })
+        .then(upondeletion =>{
+            res.json(upondeletion)})
         .catch(er => {
             res.json({message: `Error ${er}`})
         });
 }
+
